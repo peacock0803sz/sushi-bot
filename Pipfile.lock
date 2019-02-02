@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "92cc80a053e197e6202a01b3ac909794b5b063affc0f7fa0ddc12d1b557c1984"
+            "sha256": "445a379a3668f053b98517e69faa76b55e4dcec7cdc83547739efeb55c695174"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,6 +16,13 @@
         ]
     },
     "default": {
+        "chromedriver-binary": {
+            "hashes": [
+                "sha256:14d5cc62bda6773d9f1c63bfbd6b351c29b3a62eb7c2198ad2b6646322c641e5"
+            ],
+            "index": "pypi",
+            "version": "==2.45.0"
+        },
         "discord-py": {
             "file": "https://github.com/Rapptz/discord.py/archive/rewrite.zip"
         },
