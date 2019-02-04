@@ -10,7 +10,6 @@ selenium = "*"
 discord-py = {file = "https://github.com/Rapptz/discord.py/archive/rewrite.zip"}
 flake8 = "*"
 chromedriver-binary = "*"
-bs4 = "*"
 
 [requires]
 python_version = "3.7"
