@@ -1,0 +1,8 @@
+{
+    "python.pythonPath": "C:\\Users\\yoichi\\.virtualenvs\\dna-au6iL-EO\\Scripts\\python.exe",
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": true,
+    "editor.autoClosingQuotes": "always",
+    "editor.autoClosingBrackets": "always"
+}
