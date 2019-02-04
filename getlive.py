@@ -6,7 +6,7 @@ options.add_argument('--headless')
 
 url = 'http://live.nicovideo.jp/my'
 
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=options)
 
 
 def get_live():
@@ -18,11 +18,13 @@ def get_live():
     driver.find_element_by_id('input__password').send_keys("bartok0803sz")
     driver.find_element_by_id('login__submit').click()
 
-    live_item = driver.find_element_by_class_name('liveItemTxt').text
-    print(live_item)
+    live_item_count = len(driver.find_elements_by_class_name('liveItemTxt'))
+    print(live_item_count)
+
+    for i in range(live_item_count):
+        live_item = driver.find_elements_by_class_name('liveItemTxt')[i].text
+        live_link = driver.find_element_by_xpath(f"""//*[@id='subscribeItemsWrap']/div/div[{live_item_count}]/div/h3/a""").get_attribute('href')
+        return live_item, '\n', live_link
 
     driver.close()
     driver.quit()
-
-
-get_live()
