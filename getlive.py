@@ -19,12 +19,19 @@ def get_live():
     driver.find_element_by_id('login__submit').click()
 
     live_item_count = len(driver.find_elements_by_class_name('liveItemTxt'))
-    print(live_item_count)
+
+    retval = []
 
     for i in range(live_item_count):
         live_item = driver.find_elements_by_class_name('liveItemTxt')[i].text
-        live_link = driver.find_element_by_xpath(f"""//*[@id='subscribeItemsWrap']/div/div[{live_item_count}]/div/h3/a""").get_attribute('href')
-        return live_item, '\n', live_link
+        live_link = driver.find_element_by_xpath(f"""//*[@id='subscribeItemsWrap']
+        /div/div[{live_item_count}]/div/h3/a""").get_attribute('href')
+
+        retval.append(live_item)
+        retval.append(live_link)
+        retval.append('\n')
+
+    return retval
 
     driver.close()
     driver.quit()
