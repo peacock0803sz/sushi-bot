@@ -1,7 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import Select
 
 options = Options()
 options.add_argument('--headless')
@@ -22,6 +20,9 @@ def get_live():
 
     live_item = driver.find_element_by_class_name('liveItemTxt').text
     print(live_item)
+
+    driver.close()
+    driver.quit()
 
 
 get_live()
