@@ -20,4 +20,4 @@ async def on_message(message):
         lives = '\n'.join(get_live())
         await message.channel.send(lives)
 
-client.run('NTQxMTc1MDE5NTc3ODAyNzU0.Dzb5wA.fGuKBWT2OSRBlDcK42MYbn_SqXw')
+client.run('NTQxMTc1MDE5NTc3ODAyNzU0.Dzqlkg.pMUWEfDHAOh-nA5nQq9nO8v2Ps0')
