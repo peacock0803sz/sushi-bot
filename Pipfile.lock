@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "445a379a3668f053b98517e69faa76b55e4dcec7cdc83547739efeb55c695174"
+            "sha256": "1054e29d0895c10d832e70d64144f5f42d88d03ac3df98e8be213849a29ceff7"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,13 +18,17 @@
     "default": {
         "chromedriver-binary": {
             "hashes": [
-                "sha256:14d5cc62bda6773d9f1c63bfbd6b351c29b3a62eb7c2198ad2b6646322c641e5"
+                "sha256:cc2819f08f219aacb622e171485eeaa8234b077837f85b944b142328a67f9ca6"
             ],
             "index": "pypi",
-            "version": "==2.45.0"
+            "version": "==2.46.0"
         },
         "discord-py": {
-            "file": "https://github.com/Rapptz/discord.py/archive/rewrite.zip"
+            "extras": [
+                "voice"
+            ],
+            "git": "https://github.com/Rapptz/discord.py",
+            "ref": "1222bce271cf736b4db8c1eecb2823edd22f85dc"
         },
         "entrypoints": {
             "hashes": [
@@ -35,11 +39,11 @@
         },
         "flake8": {
             "hashes": [
-                "sha256:09b9bb539920776da542e67a570a5df96ff933c9a08b62cfae920bcc789e4383",
-                "sha256:e0f8cd519cfc0072c0ee31add5def09d2b3ef6040b34dc426445c3af9b02163c"
+                "sha256:c3ba1e130c813191db95c431a18cb4d20a468e98af7a77e2181b68574481ad36",
+                "sha256:fd9ddf503110bf3d8b1d270e8c673aab29ccb3dd6abf29bae1f54e5116ab4a91"
             ],
             "index": "pypi",
-            "version": "==3.7.4"
+            "version": "==3.7.5"
         },
         "mccabe": {
             "hashes": [
