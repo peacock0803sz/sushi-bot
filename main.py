@@ -16,7 +16,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('/dna'):
+    if message.content.startswith('/sushi now'):
         lives = '\n'.join(get_live())
         await message.channel.send(lives)
 
