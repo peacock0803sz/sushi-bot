@@ -6,7 +6,6 @@ options.add_argument('--headless')
 
 url = 'http://live.nicovideo.jp/my'
 
-if chrome_binary_path: options.binary_location = chrome_binary_path
 driver = webdriver.Chrome(options=options)
 
 
