@@ -1,3 +1,5 @@
+import time
+
 import discord
 
 from getlive import get_live
@@ -19,5 +21,17 @@ async def on_message(message):
     if message.content.startswith('/dna'):
         lives = '\n'.join(get_live())
         await message.channel.send(lives)
+
+
+@client.event
+while True:
+    if get_live() == 0:
+        break
+    else:
+        lives = '\n'.join(get_live())
+        await message.channel.send(lives)
+
+    time.sleep(300)
+
 
 client.run('NTQyMjA2NDI5MTA1MzU2ODEw.DzqotA.BTDQKWLzNOYaP3ANyocyTy6QaTA')

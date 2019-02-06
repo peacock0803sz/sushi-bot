@@ -30,7 +30,6 @@ def get_live():
 
             retval.append(live_item)
             retval.append(live_link)
-            retval.append('\n')
 
     else:
         retval.append('現在放送中の番組はありません。')
