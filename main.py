@@ -23,13 +23,13 @@ async def on_message(message):
         await message.channel.send(lives)
 
 
-@client.event
 while True:
     if get_live() == 0:
         break
     else:
-        lives = '\n'.join(get_live())
-        await message.channel.send(lives)
+        async def cron(message):
+            lives = '\n'.join(get_live())
+            await message.channel.send(lives)
 
     time.sleep(300)
 
