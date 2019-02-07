@@ -23,16 +23,6 @@ async def on_message(message):
         await message.channel.send(lives)
 
 
-while True:
-    if get_live() == 0:
-        break
-    else:
-        async def cron(message):
-            lives = '\n'.join(get_live())
-            await message.channel.send(lives)
-
-    time.sleep(300)
-
 
 # TestBot: NTQyNjM5MzQ3NDgxMDUxMTM2.Dzw78g.6LlhLGaMqH-aMVvoq1MkspPOd-c
 # Sushi Bot: NTQyMjA2NDI5MTA1MzU2ODEw.DzqotA.BTDQKWLzNOYaP3ANyocyTy6QaTA
