@@ -22,7 +22,6 @@ def get_live():
     driver.find_element_by_id('login__submit').click()
 
     # 現在放送中の番組を取得
-
     driver.get(my_url)
 
     live_item_count = len(driver.find_elements_by_class_name('liveItemTxt'))
@@ -38,9 +37,9 @@ def get_live():
             /div/div[{1}]/div/h3/a""").get_attribute('href')
 
             retval.append(live_item)
-            retval.append(live_link)
             retval.append('\n')
-            print(retval)
+            retval.append(live_link)
+            retval.append('\n\n')
 
     else:
         retval.append('現在放送中の番組はありません。')
