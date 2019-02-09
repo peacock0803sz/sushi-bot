@@ -25,8 +25,6 @@ def get_live():
     driver.get(my_url)
 
     live_item_count = len(driver.find_elements_by_class_name('liveItemTxt'))
-    if driver.find_element_by_id('sub_link1') is not None:
-        driver.find_element_by_id('sub_link1').click()
     retval = []
 
     if 0 < live_item_count:
