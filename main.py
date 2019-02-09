@@ -22,7 +22,7 @@ async def on_message(message):
         lives = ''.join(get_live())
         await message.channel.send(lives)
 
-    if message.content.startswith('/sushi wacth'):
+    if message.content.startswith('/sushi watch'):
         for i in range(228):
             lives = ''.join(get_live())
             await message.channel.send(lives)
