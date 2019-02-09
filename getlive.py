@@ -26,23 +26,26 @@ def get_live():
     driver.get(my_url)
 
     live_item_count = len(driver.find_elements_by_class_name('liveItemTxt'))
-
+    if driver.find_element_by_id('sub_link1') is not None:
+        driver.find_element_by_id('sub_link1').click()
     retval = []
 
     if 0 < live_item_count:
         for i in range(live_item_count):
+            print(1)
             live_item = driver.find_elements_by_class_name('liveItemTxt')[i].text
             live_link = driver.find_element_by_xpath(f"""//*[@id='subscribeItemsWrap']
-            /div/div[{live_item_count}]/div/h3/a""").get_attribute('href')
+            /div/div[{1}]/div/h3/a""").get_attribute('href')
 
             retval.append(live_item)
             retval.append(live_link)
             retval.append('\n')
+            print(retval)
 
     else:
         retval.append('現在放送中の番組はありません。')
 
-    return retval
-
     driver.close()
     driver.quit()
+
+    return retval

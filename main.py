@@ -20,4 +20,6 @@ async def on_message(message):
         lives = '\n'.join(get_live())
         await message.channel.send(lives)
 
-client.run('NTQyMjA2NDI5MTA1MzU2ODEw.DzvYhg.Xuqb5gCBrN9hb5znTMUS0qI725A')
+# TestBot: NTQyNjM5MzQ3NDgxMDUxMTM2.Dzw78g.6LlhLGaMqH-aMVvoq1MkspPOd-c
+# Sushi Bot: NTQyMjA2NDI5MTA1MzU2ODEw.DzqotA.BTDQKWLzNOYaP3ANyocyTy6QaTA
+client.run('NTQyNjM5MzQ3NDgxMDUxMTM2.Dzw78g.6LlhLGaMqH-aMVvoq1MkspPOd-c')
