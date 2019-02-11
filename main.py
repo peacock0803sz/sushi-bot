@@ -18,16 +18,15 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('/sushi list'):
+    if message.content.startswith('/sushi now'):
         lives = ''.join(get_live())
         await message.channel.send(lives)
 
-    if message.content.startswith('/sushi wacth'):
+    if message.content.startswith('/sushi watch'):
         for i in range(228):
             lives = ''.join(get_live())
             await message.channel.send(lives)
             await asyncio.sleep(300)
-
 
 # TestBot: NTQyNjM5MzQ3NDgxMDUxMTM2.Dzw78g.6LlhLGaMqH-aMVvoq1MkspPOd-c
 # Sushi Bot: NTQyMjA2NDI5MTA1MzU2ODEw.DzqotA.BTDQKWLzNOYaP3ANyocyTy6QaTA

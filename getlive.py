@@ -25,7 +25,6 @@ def get_live():
     driver.get(my_url)
 
     live_item_count = len(driver.find_elements_by_class_name('liveItemTxt'))
-
     retval = []
 
     if 0 < live_item_count:
