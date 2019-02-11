@@ -23,11 +23,14 @@ async def on_message(message):
         await message.channel.send(lives)
 
     if message.content.startswith('/sushi watch'):
+        lives = ''.join(get_live())
         for i in range(228):
-            lives = ''.join(get_live())
-            await message.channel.send(lives)
+            if lives != '現在放送中の番組はありません。':
+                await message.channel.send(lives)
+            elif lives == '現在放送中の番組はありません。':
+                print("現在放送中の番組はありません。")
             await asyncio.sleep(300)
 
 # TestBot: NTQyNjM5MzQ3NDgxMDUxMTM2.Dzw78g.6LlhLGaMqH-aMVvoq1MkspPOd-c
 # Sushi Bot: NTQyMjA2NDI5MTA1MzU2ODEw.DzqotA.BTDQKWLzNOYaP3ANyocyTy6QaTA
-client.run('NTQyMjA2NDI5MTA1MzU2ODEw.DzqotA.BTDQKWLzNOYaP3ANyocyTy6QaTA')
+client.run('NTQyNjM5MzQ3NDgxMDUxMTM2.Dzw78g.6LlhLGaMqH-aMVvoq1MkspPOd-c')
