@@ -1,10 +1,13 @@
-import asyncio
+import os
+# import asyncio
 
 import discord
 
 from getlive import get_live
 
 client = discord.Client()
+
+DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
 
 
 @client.event
@@ -22,6 +25,4 @@ async def on_message(message):
         lives = ''.join(get_live())
         await message.channel.send(lives)
 
-# TestBot: NTQyNjM5MzQ3NDgxMDUxMTM2.Dzw78g.6LlhLGaMqH-aMVvoq1MkspPOd-c
-# Sushi Bot: NTQyMjA2NDI5MTA1MzU2ODEw.DzqotA.BTDQKWLzNOYaP3ANyocyTy6QaTA
-client.run('NTQyMjA2NDI5MTA1MzU2ODEw.DzqotA.BTDQKWLzNOYaP3ANyocyTy6QaTA')
+client.run(DISCORD_TOKEN)
