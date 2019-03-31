@@ -1,10 +1,13 @@
-import asyncio
+import os
+import time
 
 import discord
 
 from getlive import get_live
 
 client = discord.Client()
+
+DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
 
 
 @client.event
@@ -15,13 +18,19 @@ async def on_ready():
 @client.event
 async def on_message(message):
 
+    lives = ''.join(get_live())
     if message.author == client.user:
         return
 
     if message.content.startswith('/sushi now'):
-        lives = ''.join(get_live())
         await message.channel.send(lives)
 
-# TestBot: NTQyNjM5MzQ3NDgxMDUxMTM2.Dzw78g.6LlhLGaMqH-aMVvoq1MkspPOd-c
-# Sushi Bot: NTQyMjA2NDI5MTA1MzU2ODEw.DzqotA.BTDQKWLzNOYaP3ANyocyTy6QaTA
-client.run('NTQyMjA2NDI5MTA1MzU2ODEw.DzqotA.BTDQKWLzNOYaP3ANyocyTy6QaTA')
+    if message.content.startswith('/sushi watch'):
+        for i in range(228):
+            if lives != '現在放送中の番組はありません。':
+                await message.channel.send(lives)
+            elif lives == '現在放送中の番組はありません。':
+                print('現在放送中の番組はありません。')
+            time.sleep(300)
+
+client.run(DISCORD_TOKEN)
