@@ -1,5 +1,5 @@
 import os
-# import asyncio
+import time
 
 import discord
 
@@ -18,11 +18,19 @@ async def on_ready():
 @client.event
 async def on_message(message):
 
+    lives = ''.join(get_live())
     if message.author == client.user:
         return
 
     if message.content.startswith('/sushi now'):
-        lives = ''.join(get_live())
         await message.channel.send(lives)
+
+    if message.content.startswith('/sushi watch'):
+        for i in range(228):
+            if lives != '現在放送中の番組はありません。':
+                await message.channel.send(lives)
+            elif lives == '現在放送中の番組はありません。':
+                print('現在放送中の番組はありません。')
+            time.sleep(300)
 
 client.run(DISCORD_TOKEN)
