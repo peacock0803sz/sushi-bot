@@ -17,12 +17,14 @@ async def on_ready():
 
 async def watch(message):
 
+    before_result = ''
     while(True):
-        lives = ''.join(get_live())
-        if lives != '現在放送中の番組はありません。':
-            await message.channel.send(lives)
-        elif lives == '現在放送中の番組はありません。':
+        result = ''.join(get_live())
+        if result != before_result:
+            await message.channel.send(result)
+        elif result == before_result:
             print('現在放送中の番組はありません。')
+        before_result = result
         await asyncio.sleep(300)
 
 
