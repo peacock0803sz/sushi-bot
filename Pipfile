@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 selenium = "*"
-discord-py = {extras = ["voice"],git = "https://github.com/Rapptz/discord.py",ref = "rewrite"}
+discord-py = "*"
 flake8 = "*"
 chromedriver-binary = "*"
 aiohttp = "*"
