@@ -22,8 +22,6 @@ async def watch(message):
         result = ''.join(get_live())
         if result != before_result:
             await message.channel.send(result)
-        elif result == before_result:
-            print('現在放送中の番組はありません。')
         before_result = result
         await asyncio.sleep(300)
 
