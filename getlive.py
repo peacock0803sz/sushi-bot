@@ -37,6 +37,7 @@ def get_live():
             live_item = driver.find_elements_by_class_name('liveItemTxt')[i].text
             live_link = driver.find_element_by_xpath(f"""//*[@id='subscribeItemsWrap']
             /div/div[{live_item_count}]/div/h3/a""").get_attribute('href')
+            live_link = live_link[:-12]
 
             retval.append(live_item)
             retval.append('\n')
@@ -48,6 +49,7 @@ def get_live():
             live_item = driver.find_elements_by_class_name('liveItemTxt')[i].text
             live_link = driver.find_element_by_xpath(f"""//*[@id='subscribeItemsWrap']
             /div/div[{3}]/div/h3/a""").get_attribute('href')
+            live_link = live_link[:-12]
 
             retval.append(live_item)
             retval.append('\n')

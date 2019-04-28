@@ -11,8 +11,8 @@ DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
 
 
 @client.event
-async def on_ready():
-    print('I have logged in as {0.user}'.format(client))
+# async def on_ready():
+#     print('I have logged in as {0.user}'.format(client))
 
 
 async def watch(message):
