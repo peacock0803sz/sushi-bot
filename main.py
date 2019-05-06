@@ -23,7 +23,7 @@ async def watch(message):
         if result != before_result:
             await message.channel.send(result)
         before_result = result
-        await asyncio.sleep(300)
+        await asyncio.sleep(60)
 
 
 @client.event
