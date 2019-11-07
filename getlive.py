@@ -11,7 +11,7 @@ MY_URL = 'http://live.nicovideo.jp/my'
 NICOLIVE_MAIL = os.environ['NICOLIVE_MAIL']
 NICOLIVE_PASS = os.environ['NICOLIVE_PASS']
 
-driver = webdriver.Chrome(options=OPTIONS)
+driver = webdriver.Chrome(options=OPTIONS, executable_path='/usr/bin/chromedriver')
 
 
 def get_live():
