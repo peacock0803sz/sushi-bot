@@ -1,64 +1,45 @@
 import os
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 
-OPTIONS = Options()
-OPTIONS.add_argument('--headless')
+import requests
+from bs4 import BeautifulSoup
+from discord.ext import commands
 
 LOGIN_URL = 'https://account.nicovideo.jp/login?next_url=my&site=nicolive'
 MY_URL = 'http://live.nicovideo.jp/my'
 
-NICOLIVE_MAIL = os.environ['NICOLIVE_MAIL']
-NICOLIVE_PASS = os.environ['NICOLIVE_PASS']
 
-driver = webdriver.Chrome(options=OPTIONS)
+def get_live_list():
+    session = requests.session()
+    url = 'https://account.nicovideo.jp/login/redirector'
+    url_parm = '?show_button_twitter=1&site=nicolive&show_button_facebook=1&next_url=my'
+    login_info = {'mail_tel': os.environ['NICOLIVE_MAIL'], 'password': os.environ['NICOLIVE_PASS']}
+    r = session.post(url + url_parm, data=login_info)
+
+    soup = BeautifulSoup(r.content, 'lxml')
+    live_item_txt = soup.find_all('div', class_='liveItemTxt')
+    start_times = [live.find('p', class_='start_time').get_text().strip() for live in live_item_txt]
+    links = [live.find('h3').find('a').get('href')[:-12].strip() for live in live_item_txt]
+    titles = [live.find('h3').find('a').get('title').strip() for live in live_item_txt]
+    channels = [live.find_all('p')[1].get('title').strip() for live in live_item_txt]
+    lives = []
+    for i in range(len(live_item_txt)):
+        lives.append({'title': titles[i], 'channel': channels[i], 'link': links[i], 'start_time': start_times[i]})
+    return lives
 
 
-def get_live():
+class Live(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+        self._last_member = None
 
-    # ログイン処理
-    driver.get(LOGIN_URL)
+    @commands.command()
+    async def now(self, ctx):
+        text = []
+        for s in get_live_list():
+            text.append(f'{s["start_time"]}\n番組名: {s["title"]}\nチャンネル: {s["channel"]}\nURL: {s["link"]}\n')
+        await ctx.send('\n\n'.join(text))
 
-    driver.find_element_by_id('input__mailtel').clear
-    driver.find_element_by_id('input__mailtel').send_keys(NICOLIVE_MAIL)
-    driver.find_element_by_id('input__password').clear
-    driver.find_element_by_id('input__password').send_keys(NICOLIVE_PASS)
-    driver.find_element_by_id('login__submit').click()
 
-    # 現在放送中の番組を取得
-    driver.get(MY_URL)
-
-    live_item_count = len(driver.find_elements_by_class_name('liveItem'))
-    print(live_item_count)
-    retval = []
-
-    if 0 < live_item_count <= 3:
-        for i in range(live_item_count):
-            xpath = f"""//*[@id='subscribeItemsWrap']/div/div[{i + 1}]/div/h3/a"""
-            live_item = driver.find_elements_by_class_name('liveItemTxt')[i].text
-            live_link = driver.find_element_by_xpath(xpath).get_attribute('href')
-            live_link = live_link[:-12]
-
-            retval.append(live_item)
-            retval.append('\n')
-            retval.append(live_link)
-            retval.append('\n\n')
-
-    elif 3 < live_item_count:
-        for i in range(3):
-            live_item = driver.find_elements_by_class_name('liveItemTxt')[i].text
-            live_link = driver.find_element_by_xpath().get_attribute('href')
-            live_link = live_link[:-12]
-
-            retval.append(live_item)
-            retval.append('\n')
-            retval.append(live_link)
-            retval.append('\n\n')
-
-    else:
-        retval.append('現在放送中の番組はありません。')
-
-    return retval
-
-    driver.close()
-    driver.quit()
+if __name__ == '__main__':
+    import json
+    [print(json.dumps(live, ensure_ascii=False)) for live in get_live_list()]

@@ -1,42 +1,12 @@
 import os
-import asyncio
 
 import discord
+from discord.ext import commands
 
-from getlive import get_live
+import getlive
 
-client = discord.Client()
-
-DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
-
-
-# @client.event
-# async def on_ready():
-#     print('I have logged in as {0.user}'.format(client))
-
-
-async def watch(message):
-
-    before_result = ''
-    while(True):
-        result = ''.join(get_live())
-        if result != before_result:
-            await message.channel.send(result)
-        before_result = result
-        await asyncio.sleep(60)
-
-
-@client.event
-async def on_message(message):
-
-    lives = ''.join(get_live())
-    if message.author == client.user:
-        return
-
-    if message.content.startswith('/sushi now'):
-        await message.channel.send(lives)
-
-    if message.content.startswith('/sushi watch'):
-        client.loop.create_task(watch(message))
-
-client.run(DISCORD_TOKEN)
+if __name__ == '__main__':
+    DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
+    bot = discord.ext.commands.Bot('/sushi ')
+    bot.add_cog(getlive.Live(bot))
+    bot.run(DISCORD_TOKEN)
