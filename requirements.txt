@@ -9,7 +9,7 @@ chromedriver-binary==79.0.3945.16.0
 discord==1.0.1
 discord.py==1.2.4
 idna==2.8
-lxml==4.4.1
+lxml==4.9.1
 multidict==4.5.2
 requests==2.22.0
 selenium==3.141.0
